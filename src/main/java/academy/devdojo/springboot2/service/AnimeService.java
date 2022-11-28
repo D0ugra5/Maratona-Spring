@@ -9,13 +9,13 @@ import academy.devdojo.springboot2.requests.AnimePutRequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class AnimeService {
     private final AnimeRepository animesRespository;
-
 
     public List<Anime> listAll() {
         return animesRespository.findAll();
@@ -29,6 +29,7 @@ public class AnimeService {
                 .orElseThrow(() -> new BadRequestionException("Anime not found"));
     }
 
+    @Transactional
     public Anime save(AnimePostRequestBody animeRepositoryRequestBody) {
         return animesRespository.save(AnimeMapper.INSTANCE.toAnime(animeRepositoryRequestBody));
     }
