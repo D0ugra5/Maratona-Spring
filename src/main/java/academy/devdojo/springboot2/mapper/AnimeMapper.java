@@ -9,7 +9,6 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
-@Component
 public abstract class AnimeMapper {
     public static final AnimeMapper INSTANCE = Mappers.getMapper(AnimeMapper.class);
     public abstract Anime toAnime(AnimePostRequestBody animePostRequestBody);
